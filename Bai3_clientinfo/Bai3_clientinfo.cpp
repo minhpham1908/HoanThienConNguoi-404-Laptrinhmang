@@ -3,62 +3,111 @@
 
 #include "pch.h"
 #include <iostream>
+#include"winsock2.h"
 #include <Windows.h>
 #include <stdio.h>
 #include <tchar.h>
 #define INFO_BUFFER_SIZE 32767
-#pragma comment(lib, "user32.lib")
-void printError(TCHAR* msg);
 
-int main()
+
+using namespace std;
+
+struct drivesInfo
 {
-	/*
+	char computerName[128];
+	char name[16];
+	__int64 totalSize[16];
+	__int64 freeSize[16];
+};
+
+
+int main(int argc, char** argv) 
+{	
+	struct drivesInfo info;
+	int count=0;
 	DWORD i;
 	TCHAR  infoBuf[INFO_BUFFER_SIZE];
 	DWORD  bufCharCount = INFO_BUFFER_SIZE;
-
-    std::cout << "Hello World!\n"; 
 	bufCharCount = INFO_BUFFER_SIZE;
-	if (GetComputerName(infoBuf, &bufCharCount))
+	//Lay ten may tinh
+	if (!GetComputerName(infoBuf, &bufCharCount))
+		printf("he");
 	_tprintf(TEXT("\nComputer name:      %s"), infoBuf);
-	if (GetSystemDirectory(infoBuf, INFO_BUFFER_SIZE))
-	_tprintf(TEXT("\nSystem Directory:   %s"), infoBuf);
-	if (GetUserName(infoBuf, &bufCharCount))
-		_tprintf(TEXT("\nUser name:      %s\n"), infoBuf);
+	//Gan vao info
+	wcstombs(info.computerName, infoBuf, wcslen(infoBuf)+1);
 	
-	
-	SYSTEM_INFO siSysInfo;
-
-	// Copy the hardware information to the SYSTEM_INFO structure. 
-
-	GetSystemInfo(&siSysInfo);
-
-	// Display the contents of the SYSTEM_INFO structure. 
-
-	printf("Hardware information: \n");
-	printf("  OEM ID: %u\n", siSysInfo.dwOemId);
-	printf("  Number of processors: %u\n",
-		siSysInfo.dwNumberOfProcessors);
-	printf("  Page size: %u\n", siSysInfo.dwPageSize);
-	printf("  Processor type: %u\n", siSysInfo.dwProcessorType);
-	printf("  Minimum application address: %lx\n",
-		siSysInfo.lpMinimumApplicationAddress);
-	printf("  Maximum application address: %lx\n",
-		siSysInfo.lpMaximumApplicationAddress);
-	printf("  Active processor mask: %u\n",
-		siSysInfo.dwActiveProcessorMask);
-
+	// Lay ten tat ca cac o dia kem dung luong moi o
 	const int BUFFER_SIZE = 255;
 	WCHAR buffer[BUFFER_SIZE];
-	GetLogicalDriveStrings(BUFFER_SIZE, buffer);
-	printf("%s", buffer);
-	*/
+	DWORD test;
+	//lay ten
+	test = GetLogicalDriveStrings(BUFFER_SIZE, buffer);
+	
+	/*if (test != 0)
+	{
+		printf("GetLogicalDriveStrings() return value: %d, Error (if any): %d \n", test, GetLastError());
+		printf("The logical drives of this machine are:\n");
+		for (int i = 0; i < test; i++) {
+			printf("%c", buffer[i]);
 
-	const int BUFFER_SIZE = 255;
-	WCHAR buffer[BUFFER_SIZE];
-	GetLogicalDriveStrings(BUFFER_SIZE, buffer);
+		}
+		printf("\n");
 
-	printf("%s", buffer);
+	}
+	else printf("GetLogicalDriveStrings() is failed lor!!! Error code: %d\n", GetLastError());*/
+	
+	char teno[4];
+	wchar_t wtext[5];
+	__int64 freeBytesToCaller, totalBytes, freeBytes;
+	LPWSTR ptr;
+	for (int i = 0; i < test; i=i+4) {
+		teno[0] = buffer[i];
+		teno[1] = ':';
+		teno[2] = '\\';
+		teno[3] = '\0';
+		mbstowcs(wtext, teno, strlen(teno)+1);//Plus null
+		ptr = wtext;
+		wcout << ptr << endl;
+		// lay dung luong moi o
+		
+		BOOL Result = GetDiskFreeSpaceEx(ptr, (PULARGE_INTEGER)&freeBytesToCaller, (PULARGE_INTEGER)&totalBytes, (PULARGE_INTEGER)&freeBytes);
+		if (Result) {
+			info.name[count] = buffer[i];
+			info.totalSize[count] = totalBytes / (1024 * 1024 * 1024);
+			info.freeSize[count] = freeBytes / (1024 * 1024 * 1024);
+			count++;
+		}
+		/*{
+
+			wprintf(L"\nGetDiskFreeSpaceExW reports:\n\n");
+
+			wprintf(L"Available space to caller = %I64u GB\n", freeBytesToCaller / (1024 * 1024 * 1024));
+
+			wprintf(L"Total space               = %I64u GB\n", totalBytes / (1024 * 1024 * 1024));
+
+			wprintf(L"Free space on drive       = %I64u GB\n", freeBytes / (1024 * 1024 * 1024));
+
+		}*/
+	}
+	info.name[count] = 0;
+
+	string serverIP = argv[1];
+	int port = atoi(argv[2]);
+	printf("Connecting to %s:%u\n", serverIP.c_str(), port);
+	WSADATA wsa;
+	WSAStartup(MAKEWORD(2, 2), &wsa);
+	SOCKET client = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+
+	SOCKADDR_IN serverAddr;
+	serverAddr.sin_family = AF_INET;
+	serverAddr.sin_addr.s_addr = inet_addr("127.0.0.1");
+	serverAddr.sin_port = htons(9000);
+	int he = connect(client, (SOCKADDR *)&serverAddr, sizeof(serverAddr));
+	printf("Ket noi thanh cong\n");
+	send(client, (char *)&info, sizeof(info), 0);
+	printf("Da gui thong diep\n");
+	closesocket(client);
+	WSACleanup();
 
 	system("pause");
 	return 0;
