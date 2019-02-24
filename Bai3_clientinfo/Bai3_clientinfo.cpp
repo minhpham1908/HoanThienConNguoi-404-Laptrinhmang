@@ -16,8 +16,8 @@ struct drivesInfo
 {
 	char computerName[128];
 	char name[16];
-	__int64 totalSize[16];
-	__int64 freeSize[16];
+	int totalSize[16];
+	int freeSize[16];
 };
 
 
@@ -73,8 +73,8 @@ int main(int argc, char** argv)
 		BOOL Result = GetDiskFreeSpaceEx(ptr, (PULARGE_INTEGER)&freeBytesToCaller, (PULARGE_INTEGER)&totalBytes, (PULARGE_INTEGER)&freeBytes);
 		if (Result) {
 			info.name[count] = buffer[i];
-			info.totalSize[count] = totalBytes / (1024 * 1024 * 1024);
-			info.freeSize[count] = freeBytes / (1024 * 1024 * 1024);
+			info.totalSize[count] = (int) (totalBytes / (1024 * 1024 * 1024));
+			info.freeSize[count] = (int) (freeBytes / (1024 * 1024 * 1024));
 			count++;
 		}
 		/*{
@@ -100,8 +100,8 @@ int main(int argc, char** argv)
 
 	SOCKADDR_IN serverAddr;
 	serverAddr.sin_family = AF_INET;
-	serverAddr.sin_addr.s_addr = inet_addr("127.0.0.1");
-	serverAddr.sin_port = htons(9000);
+	serverAddr.sin_addr.s_addr = inet_addr(serverIP.c_str());
+	serverAddr.sin_port = htons(port);
 	int he = connect(client, (SOCKADDR *)&serverAddr, sizeof(serverAddr));
 	printf("Ket noi thanh cong\n");
 	send(client, (char *)&info, sizeof(info), 0);
