@@ -12,8 +12,8 @@ struct drivesInfo
 {
 	char computerName[128];
 	char name[16];
-	__int64 totalSize[16];
-	__int64 freeSize[16];
+	int totalSize[16];
+	int freeSize[16];
 };
 
 int main(int argc, char **argv)
@@ -35,22 +35,28 @@ int main(int argc, char **argv)
 	printf("khoi dong thanh cong server\n");
 	SOCKET client = accept(listener, NULL, NULL);
 	printf("Co ket noi den\n");
-	char buf[256];
-	int ret;
+	char buf[1024];
+	int ret = recv(client, buf, sizeof(buf), 0);
 
-	while (1)
-	{
-		ret = recv(client, buf, sizeof(buf), 0);
-		if (ret <= 0)
-			break;
+	buf[ret] = 0;
+	printf("May tinh %s co 1 thanh y", buf);
 
-		buf[ret] = 0;
-		printf("Received: %s\n", buf);
+	struct drivesInfo info;
+	memcpy(&info, buf, sizeof(info));
+
+	printf("May tinh ket noi den la: %s\n", info.computerName);
+	printf("Drive\tTotal(GB)\tFree(GB)\n");
+	for (int i = 0; i < sizeof(info.name); i++) {
+		if(info.name[i] > 'A' && info.name[i] < 'Z')
+		printf("%c:\\\t%u\t\t%u\n", info.name[i], info.totalSize[i], info.freeSize[i]);
+
 	}
 	closesocket(client);
 	closesocket(listener);
 
 	WSACleanup();
+
+	system("pause");
 
 	return 0;
 }
