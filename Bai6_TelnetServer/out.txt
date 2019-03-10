@@ -1,0 +1,66 @@
+ Volume in drive D is SETUP
+ Volume Serial Number is 752E-FA92
+
+ Directory of D:\
+
+16/Feb/2019  12:59 AM            16,608 amp-auto-ads-0.1.js
+07/Aug/2017  04:48 PM         4,400,200 chu my.mp4
+23/Feb/2018  01:51 AM            49,075 Co 5.jpg
+13/Feb/2019  09:10 PM    <DIR>          deadcell
+30/Aug/2018  02:17 PM    <DIR>          dev
+14/Dec/2018  06:42 PM    <DIR>          Diablo II Lord of Destruction (v1.13c)
+23/Jan/2019  03:30 PM    <DIR>          dota2mods
+03/Jan/2019  05:39 PM         1,874,951 Facebook.MP4
+21/Feb/2019  08:12 PM    <DIR>          Games
+27/Feb/2019  05:53 PM    <DIR>          GIF
+12/Nov/2018  01:00 AM    <DIR>          Gi†o trçnh
+10/Mar/2019  10:43 PM    <DIR>          Gi†o trçnh nam 3 kç 2
+08/Nov/2017  12:14 PM    <DIR>          idm
+10/Mar/2018  03:07 PM        26,628,890 King_s Dead - Jay Rock_ Kendrick Lamar_ [Lossless_FLAC].flac
+06/Jun/2018  08:43 PM    <DIR>          ky
+02/Dec/2017  03:48 PM    <DIR>          maplestory
+20/Jan/2019  01:26 PM    <DIR>          Median XL Launcher
+01/Mar/2019  10:35 PM    <DIR>          movies
+26/Nov/2018  08:53 PM    <DIR>          Office
+03/Dec/2018  12:38 PM    <DIR>          Osu
+07/Mar/2019  12:05 PM    <DIR>          pepe emoji
+01/Feb/2017  10:53 PM    <DIR>          phim
+26/Jan/2019  12:43 AM    <DIR>          POE-TradeMacro
+26/Jan/2019  12:42 AM    <DIR>          POE-TradeMacro_backup
+31/Jan/2018  09:50 PM    <DIR>          SteamLibrary
+31/Aug/2017  09:53 PM    <DIR>          UnityDocumentation
+25/Nov/2016  09:39 PM    <DIR>          Visual studio
+12/Sep/2018  05:08 PM    <DIR>          YourName
+
+ Directory of D:\
+
+16/Feb/2019  12:59 AM            16,608 amp-auto-ads-0.1.js
+07/Aug/2017  04:48 PM         4,400,200 chu my.mp4
+23/Feb/2018  01:51 AM            49,075 Co 5.jpg
+13/Feb/2019  09:10 PM    <DIR>          deadcell
+30/Aug/2018  02:17 PM    <DIR>          dev
+14/Dec/2018  06:42 PM    <DIR>          Diablo II Lord of Destruction (v1.13c)
+23/Jan/2019  03:30 PM    <DIR>          dota2mods
+03/Jan/2019  05:39 PM         1,874,951 Facebook.MP4
+21/Feb/2019  08:12 PM    <DIR>          Games
+27/Feb/2019  05:53 PM    <DIR>          GIF
+12/Nov/2018  01:00 AM    <DIR>          Gi†o trçnh
+10/Mar/2019  10:43 PM    <DIR>          Gi†o trçnh nam 3 kç 2
+08/Nov/2017  12:14 PM    <DIR>          idm
+10/Mar/2018  03:07 PM        26,628,890 King_s Dead - Jay Rock_ Kendrick Lamar_ [Lossless_FLAC].flac
+06/Jun/2018  08:43 PM    <DIR>          ky
+02/Dec/2017  03:48 PM    <DIR>          maplestory
+20/Jan/2019  01:26 PM    <DIR>          Median XL Launcher
+01/Mar/2019  10:35 PM    <DIR>          movies
+26/Nov/2018  08:53 PM    <DIR>          Office
+03/Dec/2018  12:38 PM    <DIR>          Osu
+07/Mar/2019  12:05 PM    <DIR>          pepe emoji
+01/Feb/2017  10:53 PM    <DIR>          phim
+26/Jan/2019  12:43 AM    <DIR>          POE-TradeMacro
+26/Jan/2019  12:42 AM    <DIR>          POE-TradeMacro_backup
+31/Jan/2018  09:50 PM    <DIR>          SteamLibrary
+31/Aug/2017  09:53 PM    <DIR>          UnityDocumentation
+25/Nov/2016  09:39 PM    <DIR>          Visual studio
+12/Sep/2018  05:08 PM    <DIR>          YourName
+              10 File(s)     65,939,448 bytes
+              46 Dir(s)  123,157,430,272 bytes free
