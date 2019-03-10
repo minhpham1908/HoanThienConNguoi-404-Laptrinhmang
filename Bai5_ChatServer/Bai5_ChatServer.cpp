@@ -30,9 +30,10 @@ string client_id[64];
 int numClients;
 char he[3] = ": ";
 
-int main()
+int main(int argc, char* argv[])
 {
-	int listenPort = 9000;
+
+	int listenPort = atoi(argv[1]);
 	WSAData wsa;
 	SOCKET ListenSocket, ClientSocket;
 	SOCKADDR_IN addr;
