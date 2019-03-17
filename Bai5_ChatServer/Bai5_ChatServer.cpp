@@ -63,27 +63,28 @@ int main(int argc, char* argv[])
 DWORD WINAPI ClientThread(LPVOID lpParameter) {
 	SOCKET ClientSocket = *(SOCKET *)lpParameter;
 	char buffer[1024];
-	char bufferSend[1024] /*= { 'c', 'l', 'i', 'e', 'n', 't','_','i','d',':' }*/;
+	char bufferSend[1024];
 	int ret;
 	int res = 0;
 	bool connected = false;
 
-	while (true) {
-		while (connected == false) {
-			printf("Vui long nhap client_id\n");
-			ret = recv(ClientSocket, buffer, sizeof(buffer), 0);
-			if (ret <= 0) {
-				RemoveClient(ClientSocket);
-				break;
-			}
-			buffer[ret] = 0;
-			res = CheckID(buffer, ClientSocket);
-			if (res == 1) {
-				printf("Connect accepted\n");
-				connected = true;
-				break;
-			}
+	while (connected == false) {
+		printf("Vui long nhap client_id\n");
+		ret = recv(ClientSocket, buffer, sizeof(buffer), 0);
+		if (ret <= 0) {
+			RemoveClient(ClientSocket);
+			break;
 		}
+		buffer[ret] = 0;
+		res = CheckID(buffer, ClientSocket);
+		if (res == 1) {
+			printf("Connect accepted\n");
+			connected = true;
+			break;
+		}
+	}
+
+	while (connected == true) {
 		ret = recv(ClientSocket, buffer, sizeof(buffer), 0);
 		if (ret <= 0) {
 			RemoveClient(ClientSocket);
