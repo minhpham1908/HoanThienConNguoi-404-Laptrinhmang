@@ -42,6 +42,7 @@ int main()
 	fd_set master;
 	while (true)
 	{
+		SOCKET client;
 		FD_ZERO(&master);
 		FD_SET(listener, &master);
 		for (int i = 0; i < numClients; i++)
@@ -53,7 +54,7 @@ int main()
 		if (ret > 0) {
 
 			if (FD_ISSET(listener, &master)) {
-				SOCKET client = accept(listener, NULL, NULL);
+				client = accept(listener, NULL, NULL);
 				printf("New client accepted: %d\n", client);
 				clients[numClients] = client;
 				numClients++;
@@ -118,7 +119,11 @@ int main()
 				}
 			}
 		}
+		
+		
 	}
+	closesocket(listener);
+	WSACleanup();
 }
 
 void RemoveClient(SOCKET client)
