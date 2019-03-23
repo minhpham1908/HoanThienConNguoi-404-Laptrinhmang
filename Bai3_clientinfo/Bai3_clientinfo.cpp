@@ -21,11 +21,10 @@ struct drivesInfo
 };
 
 
-int main(int argc, char** argv) 
-{	
+int main(int argc, char** argv)
+{
 	struct drivesInfo info;
-	int count=0;
-	DWORD i;
+	int count = 0;
 	TCHAR  infoBuf[INFO_BUFFER_SIZE];
 	DWORD  bufCharCount = INFO_BUFFER_SIZE;
 	bufCharCount = INFO_BUFFER_SIZE;
@@ -34,15 +33,15 @@ int main(int argc, char** argv)
 		printf("he");
 	_tprintf(TEXT("\nComputer name:      %s"), infoBuf);
 	//Gan vao info
-	wcstombs(info.computerName, infoBuf, wcslen(infoBuf)+1);
-	
+	wcstombs(info.computerName, infoBuf, wcslen(infoBuf) + 1);
+
 	// Lay ten tat ca cac o dia kem dung luong moi o
 	const int BUFFER_SIZE = 255;
 	WCHAR buffer[BUFFER_SIZE];
 	DWORD test;
 	//lay ten
 	test = GetLogicalDriveStrings(BUFFER_SIZE, buffer);
-	
+
 	/*if (test != 0)
 	{
 		printf("GetLogicalDriveStrings() return value: %d, Error (if any): %d \n", test, GetLastError());
@@ -55,26 +54,26 @@ int main(int argc, char** argv)
 
 	}
 	else printf("GetLogicalDriveStrings() is failed lor!!! Error code: %d\n", GetLastError());*/
-	
+
 	char teno[4];
 	wchar_t wtext[5];
 	__int64 freeBytesToCaller, totalBytes, freeBytes;
 	LPWSTR ptr;
-	for (int i = 0; i < test; i=i+4) {
-		teno[0] = buffer[i];
+	for (u_int i = 0; i < test; i = i + 4) {
+		teno[0] = (char)buffer[i];
 		teno[1] = ':';
 		teno[2] = '\\';
 		teno[3] = '\0';
-		mbstowcs(wtext, teno, strlen(teno)+1);//Plus null
+		mbstowcs(wtext, teno, strlen(teno) + 1);//Plus null
 		ptr = wtext;
 		wcout << ptr << endl;
 		// lay dung luong moi o
-		
+
 		BOOL Result = GetDiskFreeSpaceEx(ptr, (PULARGE_INTEGER)&freeBytesToCaller, (PULARGE_INTEGER)&totalBytes, (PULARGE_INTEGER)&freeBytes);
 		if (Result) {
-			info.name[count] = buffer[i];
-			info.totalSize[count] = (int) (totalBytes / (1024 * 1024 * 1024));
-			info.freeSize[count] = (int) (freeBytes / (1024 * 1024 * 1024));
+			info.name[count] = (char)buffer[i];
+			info.totalSize[count] = (int)(totalBytes / (1024 * 1024 * 1024));
+			info.freeSize[count] = (int)(freeBytes / (1024 * 1024 * 1024));
 			count++;
 		}
 		/*{
