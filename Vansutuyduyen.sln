@@ -19,6 +19,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Bai7_ChatServerWithSelect",
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Bai8_TelnetServerWithSelect", "Bai8_TelnetServerWithSelect\Bai8_TelnetServerWithSelect.vcxproj", "{3511FBFE-6BD0-4E64-9008-C9CBE5063B5F}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Bai9_ChatserverWithWSAAsyncSelect", "Bai9_ChatserverWithWSAAsyncSelect\ChatServer.vcxproj", "{9689DB7C-4C5F-40B6-A4E5-0C9829B34289}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -91,6 +93,14 @@ Global
 		{3511FBFE-6BD0-4E64-9008-C9CBE5063B5F}.Release|x64.Build.0 = Release|x64
 		{3511FBFE-6BD0-4E64-9008-C9CBE5063B5F}.Release|x86.ActiveCfg = Release|Win32
 		{3511FBFE-6BD0-4E64-9008-C9CBE5063B5F}.Release|x86.Build.0 = Release|Win32
+		{9689DB7C-4C5F-40B6-A4E5-0C9829B34289}.Debug|x64.ActiveCfg = Debug|x64
+		{9689DB7C-4C5F-40B6-A4E5-0C9829B34289}.Debug|x64.Build.0 = Debug|x64
+		{9689DB7C-4C5F-40B6-A4E5-0C9829B34289}.Debug|x86.ActiveCfg = Debug|Win32
+		{9689DB7C-4C5F-40B6-A4E5-0C9829B34289}.Debug|x86.Build.0 = Debug|Win32
+		{9689DB7C-4C5F-40B6-A4E5-0C9829B34289}.Release|x64.ActiveCfg = Release|x64
+		{9689DB7C-4C5F-40B6-A4E5-0C9829B34289}.Release|x64.Build.0 = Release|x64
+		{9689DB7C-4C5F-40B6-A4E5-0C9829B34289}.Release|x86.ActiveCfg = Release|Win32
+		{9689DB7C-4C5F-40B6-A4E5-0C9829B34289}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
